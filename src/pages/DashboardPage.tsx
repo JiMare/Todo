@@ -1,15 +1,16 @@
+import React, { useState } from 'react';
 import { Container } from '@/components/layout/Container';
 import { Flex } from '@/components/layout/Flext';
 import { Page } from '@/components/layout/Page';
-import { TaskBox } from '@/components/layout/TaskBox';
 import { Tab, Tabs } from '@/components/ui/Tabs';
 import { Text, Title } from '@/components/ui/Typography';
 import api from '@/modules/api/api';
-import React, { useState } from 'react';
 import { useQuery } from 'react-query';
+import { TaskBox } from '@/modules/TaskBox';
+import { StatusType, Task } from '@/modules/api/apiTypes';
 
 export const DashboardPage: React.FC = () => {
-  const [activeTab, setActiveTab] = useState('backlog');
+  const [activeTab, setActiveTab] = useState<StatusType>('backlog');
 
   const { data } = useQuery(['tasks'], () => api.getTasks());
 
@@ -26,7 +27,7 @@ export const DashboardPage: React.FC = () => {
           <Tab title="Done" isActive={activeTab === 'done'} onClick={() => setActiveTab('done')} />
         </Tabs>
         <Flex mt="3rem" flexDirection="column" gap="var(--spacing-md)">
-          {data.data?.filter((task) => task.status === activeTab)?.map((task) => <TaskBox></TaskBox>)}
+          {data?.data?.filter((task: Task) => task.status === activeTab)?.map((task: Task) => <TaskBox key={task.id} task={task} />)}
         </Flex>
       </Container>
     </Page>

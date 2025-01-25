@@ -1,12 +1,9 @@
 import { useAuthStore } from '@/stores/authStore';
 import axios from 'axios';
+import api from './api';
 
 const coreApi = import.meta.env.VITE_APP_CORE_API;
 const apiKey = import.meta.env.VITE_APP_API_KEY;
-
-console.log(import.meta.env);
-
-console.log(coreApi, 'api', apiKey);
 
 const axiosClient = axios.create({
   baseURL: coreApi,
@@ -37,8 +34,12 @@ axiosClient.interceptors.response.use(
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
       try {
-        const refreshToken = useAuthStore.getState().token;
-        const response = await axios.post(`${coreApi}/auth/refresh`, { refresh_token: refreshToken });
+        const token = useAuthStore.getState().token;
+        if (!token) {
+          const logOut = useAuthStore.getState().logOut;
+          logOut();
+        }
+        const response = await api.refresh();
 
         const keepToken = useAuthStore.getState().keepToken;
         keepToken(response.data.access_token);

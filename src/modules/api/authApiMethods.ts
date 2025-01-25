@@ -1,5 +1,5 @@
 import axiosClient from './axiosClient';
-import { LoginParams } from './apiTypes';
+import { LoginParams, RegistrationParams } from './apiTypes';
 import { handleResponse } from './handleResponse';
 
 const authApiMethods = {
@@ -10,18 +10,15 @@ const authApiMethods = {
     return handleResponse(response);
   },
 
-  // registrate: async (params: RegistrationParams) => {
-  //   const response = await axiosClient.post('/registration', params);
-  //   if (response.status === 200) {
-  //     return response.data;
-  //   }
+  refresh: async () => {
+    const response = await axiosClient.post('/auth/refresh');
+    return handleResponse(response);
+  },
 
-  //   if (response.status === 500) {
-  //     toast.error(i18n.t('toast.error.server'));
-  //   }
-
-  //   throw new Error(response.data.message);
-  // },
+  registrate: async (params: RegistrationParams) => {
+    const response = await axiosClient.post('/auth/register', params);
+    return handleResponse(response);
+  },
 };
 
 export default { ...authApiMethods };
