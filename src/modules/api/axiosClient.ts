@@ -1,11 +1,18 @@
 import { useAuthStore } from '@/stores/authStore';
 import axios from 'axios';
-import api from './api';
 
 const coreApi = import.meta.env.VITE_APP_CORE_API;
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
 const axiosClient = axios.create({
+  baseURL: coreApi,
+  headers: {
+    'Content-type': 'application/json',
+    'X-AUTH-KEY': apiKey,
+  },
+});
+
+const axiosRefreshClient = axios.create({
   baseURL: coreApi,
   headers: {
     'Content-type': 'application/json',
@@ -33,13 +40,14 @@ axiosClient.interceptors.response.use(
 
     if (error.response.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
+      const logOut = useAuthStore.getState().logOut;
       try {
         const token = useAuthStore.getState().token;
         if (!token) {
-          const logOut = useAuthStore.getState().logOut;
           logOut();
         }
-        const response = await api.refresh();
+        axiosRefreshClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        const response = await axiosRefreshClient.post(`${coreApi}auth/refresh`);
 
         const keepToken = useAuthStore.getState().keepToken;
         keepToken(response.data.access_token);
@@ -47,7 +55,6 @@ axiosClient.interceptors.response.use(
 
         return axiosClient(originalRequest);
       } catch (refreshError) {
-        const logOut = useAuthStore.getState().logOut;
         logOut();
         return Promise.reject(refreshError);
       }
