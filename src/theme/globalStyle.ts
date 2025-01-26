@@ -74,7 +74,7 @@ body {
   @font-face {
     font-family: 'Objektiv';
     src: url(${ObjektivMk1TrialRg}) format('truetype');
-    font-weight: normal;
+    font-weight: 500;
     font-style: normal;
 }
 

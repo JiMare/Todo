@@ -21,7 +21,11 @@ export const Text = styled.span<{ bold?: boolean; secondary?: boolean; maxWidth?
   `}
 `;
 
-export const SubTitle = styled.span<{ small?: boolean }>`
+export const SubTitle = styled.span<{ small?: boolean; secondary?: boolean }>`
   font-weight: 800;
   font-size: ${({ small }) => (small ? '0.625rem' : '0.75rem')};
+  line-height: ${({ small }) => (small ? '0.875rem' : '0.75rem')};
+  text-transform: uppercase;
+  color: ${({ secondary }) => (secondary ? 'var(--color-secondary-txt)' : 'inherit')};
+  letter-spacing: 0.15em;
 `;
