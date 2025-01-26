@@ -6,8 +6,7 @@ export const handleResponse = (response: AxiosResponse<any, any>) => {
   if (response.status >= 200 && response.status < 300) {
     return response.data;
   }
-  if (response.status === 500 || response.status === 401) {
-    console.log('error');
+  if (response.status >= 400 && response.status <= 500) {
     toast.error(response.data.message);
   }
   throw new Error(response.data.message);

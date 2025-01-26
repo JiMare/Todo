@@ -1,4 +1,4 @@
-import { Box } from '@/components/layout/Container';
+import { Box, TopLine } from '@/components/layout/Container';
 import { Page } from '@/components/layout/Page';
 import { Tab, Tabs } from '@/components/ui/Tabs';
 import { LoginForm } from '@/modules/auth/LoginForm';
@@ -11,6 +11,7 @@ export const AuthPage: React.FC = () => {
   return (
     <Page center>
       <Box>
+        <TopLine />
         <Tabs mb="2rem" mt="2rem">
           <Tab isActive={activeTab === 0} onClick={() => setActiveTab(0)} title="Login" />
           <Tab isActive={activeTab === 1} onClick={() => setActiveTab(1)} title="SignUp" />

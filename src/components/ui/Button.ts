@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import {
   flexbox,
   FlexboxProps,
@@ -12,29 +12,19 @@ import {
   TypographyProps,
   color,
   ColorProps,
-} from "styled-system";
+} from 'styled-system';
 
 type Props = {
   secondary?: boolean;
   full?: boolean;
 };
 
-export const Button = styled.button<
-  Props &
-    SpaceProps &
-    GridProps &
-    FlexboxProps &
-    LayoutProps &
-    TypographyProps &
-    ColorProps
->`
-  background-color: ${({ secondary }) =>
-    secondary ? "inherit" : "var(--color-brand)"};
+export const Button = styled.button<Props & SpaceProps & GridProps & FlexboxProps & LayoutProps & TypographyProps & ColorProps>`
+  background-color: ${({ secondary }) => (secondary ? 'inherit' : 'var(--color-brand)')};
   color: var(--color-primary-txt);
   outline: none;
   border: 2px solid;
-  border-color: ${({ secondary }) =>
-    secondary ? "var(--color-outline)" : "var(--color-brand)"};
+  border-color: ${({ secondary }) => (secondary ? 'var(--color-outline)' : 'var(--color-brand)')};
   height: 3.125rem;
   border-radius: 0.75rem;
   text-transform: uppercase;
@@ -44,7 +34,11 @@ export const Button = styled.button<
   font-weight: 800;
   font-size: 0.75rem;
   letter-spacing: 0.15em;
-  width: ${(props) => (props.full ? "100%" : null)};
+  width: ${(props) => (props.full ? '100%' : null)};
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
   ${space};
   ${grid};
   ${flexbox};
