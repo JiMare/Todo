@@ -14,7 +14,6 @@ export const ScrollableBox = styled.div<Props>`
   gap: var(--spacing-md);
   max-height: height;
   overflow-y: auto;
-  padding-right: 0.5rem;
   -ms-overflow-style: none;
   scrollbar-width: none;
 

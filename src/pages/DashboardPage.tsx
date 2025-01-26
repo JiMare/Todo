@@ -14,7 +14,9 @@ import { ReactComponent as IconFilter } from '@/components/assets/icons/filter-l
 import { ReactComponent as IconFilterRed } from '@/components/assets/icons/filter-lines-red.svg';
 //import { ReactComponent as IconHorizontal } from '@/components/assets/icons/distribute-spacing-horizontal.svg';
 import { ReactComponent as IconVertical } from '@/components/assets/icons/distribute-spacing-vertical.svg';
+import { ReactComponent as IconCheck } from '@/components/assets/icons/check.svg';
 import { FilterModal } from '@/modules/dialogs/FilterModal';
+import { ScrollableBox } from '@/components/layout/ScrollableBox';
 
 export const DashboardPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState<StatusType>('backlog');
@@ -60,9 +62,18 @@ export const DashboardPage: React.FC = () => {
             <Tab title="Doing" isActive={activeTab === 'in_progress'} onClick={() => setActiveTab('in_progress')} />
             <Tab title="Done" isActive={activeTab === 'done'} onClick={() => setActiveTab('done')} />
           </Tabs>
-          <Flex mt="3rem" flexDirection="column" gap="var(--spacing-md)">
-            {activeTabData?.map((task: Task) => <TaskBox key={task.id} task={task} />)}
-          </Flex>
+          {activeTabData.length > 0 ? (
+            <ScrollableBox mt="3rem" height="20rem">
+              {activeTabData?.map((task: Task) => <TaskBox key={task.id} task={task} />)}
+            </ScrollableBox>
+          ) : (
+            <Flex alignItems="center" mt="6rem" flexDirection="column" gap="1rem">
+              <IconButton bg="var(--color-secondary-bg)">
+                <IconCheck />
+              </IconButton>
+              <Text secondary>All done!</Text>
+            </Flex>
+          )}
         </Container>
       </Page>
       {isFilterModalOpen && (
