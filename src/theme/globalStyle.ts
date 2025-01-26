@@ -84,7 +84,7 @@ body {
   --toastify-toast-width: 22.5rem;
   --toastify-toast-bd-radius: .75rem;
   --toastify-toast-offset: 1.25rem;
-  --toastify-font-family: "Inter", sans-serif;
+  --toastify-font-family: "Objektiv", sans-serif;
   --toastify-box-shadow: .0625rem .375rem 1.25rem 0rem rgba(var(--color-neutral-rgb), 0.16);
   @media (min-width: 48rem) {
     --toastify-toast-top: 2.5rem;
@@ -114,40 +114,15 @@ body {
 .Toastify__progress-bar {
   opacity: 1;
 }
-.Toastify__progress-bar--bg,
-.Toastify__progress-bar--bg.Toastify__progress-bar--success,
-.Toastify__progress-bar--bg.Toastify__progress-bar--warning,
-.Toastify__progress-bar--bg.Toastify__progress-bar--error,
-.Toastify__progress-bar--bg.Toastify__progress-bar--info {
-  background: var(--color-invert);
-  opacity: 1;
-}
-.Toastify__progress-bar--success {
-  background: var(--color-success-dark);
-}
-.Toastify__progress-bar--warning {
-  background: var(--color-warning);
-}
-.Toastify__progress-bar--error {
-  background: var(--color-danger-dark);
-}
-.Toastify__progress-bar--info {
-  background: var(--color-text);
-}
+
 .Toastify__toast--success {
-  background-color: var(--color-success-light);
-  color: var(--color-success-dark);
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-txt);
 }
-.Toastify__toast--warning {
-  background-color: var(--color-warning-light);
-  color: var(--color-warning);
-}
+
 .Toastify__toast--error {
-  background-color: var(--color-danger-tertiary);
-  color: var(--color-danger-dark);
+  background-color: var(--color-primary-bg);
+  color: var(--color-primary-txt);
 }
-.Toastify__toast--info {
-  background-color: var(--color-table-header);
-  color: var(--color-text);
-}
+
 `;

@@ -49,7 +49,7 @@ export const LoginForm: React.FC = () => {
     <form onSubmit={handleSubmit(onSubmit)}>
       <Flex flexDirection="column" gap="1rem">
         <Input type="text" placeholder="E-mail" {...register('email')} error={Boolean(errors.email)} />
-        <Input type="password" placeholder="Password" {...register('password')} />
+        <Input type="password" placeholder="Password" {...register('password')} error={Boolean(errors.password)} />
         <Button type="submit" full mt="2rem" disabled={Boolean(Object.keys(errors).length) || isLoading}>
           Log in
         </Button>

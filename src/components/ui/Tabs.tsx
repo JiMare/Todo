@@ -16,6 +16,7 @@ export const Tab: React.FC<TabProps> = ({ title, isActive, onClick, ...props }) 
 const StyledTab = styled.div<TabProps>`
   position: relative;
   font-size: 0.875rem;
+  line-height: 1.2594rem;
   padding-bottom: 0.75rem;
   display: inline-flex;
   flex-direction: column;

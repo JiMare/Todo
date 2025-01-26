@@ -11,6 +11,7 @@ export const Input = styled.input<{ error?: boolean }>`
   padding-inline: var(--spacing-md);
   font-size: 0.875rem;
   font-weight: 500;
+  line-height: 1.2594rem;
   &:-webkit-autofill,
   &:-webkit-autofill:hover,
   &:-webkit-autofill:focus,

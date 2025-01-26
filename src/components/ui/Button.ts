@@ -33,11 +33,16 @@ export const Button = styled.button<Props & SpaceProps & GridProps & FlexboxProp
   padding-inline: var(--spacing-lg);
   font-weight: 800;
   font-size: 0.75rem;
+  line-height: 0.75rem;
   letter-spacing: 0.15em;
   width: ${(props) => (props.full ? '100%' : null)};
   &:disabled {
-    opacity: 0.3;
+    opacity: 30%;
     cursor: not-allowed;
+  }
+  &:hover:not(:disabled) {
+    transition: var(--transition);
+    scale: 1.1;
   }
   ${space};
   ${grid};
