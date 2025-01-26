@@ -12,13 +12,14 @@ import { IconButton } from '@/components/ui/IconButton';
 import { ReactComponent as IconGrid } from '@/components/assets/icons/grid-01.svg';
 import { ReactComponent as IconFilter } from '@/components/assets/icons/filter-lines.svg';
 import { ReactComponent as IconFilterRed } from '@/components/assets/icons/filter-lines-red.svg';
-//import { ReactComponent as IconHorizontal } from '@/components/assets/icons/distribute-spacing-horizontal.svg';
+import { ReactComponent as IconHorizontal } from '@/components/assets/icons/distribute-spacing-horizontal.svg';
 import { ReactComponent as IconVertical } from '@/components/assets/icons/distribute-spacing-vertical.svg';
 import { ReactComponent as IconCheck } from '@/components/assets/icons/check.svg';
 import { FilterModal } from '@/modules/dialogs/FilterModal';
 import { ScrollableBox } from '@/components/layout/ScrollableBox';
 
 export const DashboardPage: React.FC = () => {
+  const [isGridView, setIsGridView] = useState(false);
   const [activeTab, setActiveTab] = useState<StatusType>('backlog');
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [filteredUserIds, setFilteredUserIds] = useState<UserType['id'][]>([]);
@@ -45,8 +46,8 @@ export const DashboardPage: React.FC = () => {
               <IconGrid />
             </IconButton>
             <Flex gap="0.5rem">
-              <IconButton bg="var(--color-secondary-bg)">
-                <IconVertical />
+              <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsGridView(!isGridView)}>
+                {isGridView ? <IconHorizontal /> : <IconVertical />}
               </IconButton>
               <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsFilterModalOpen(true)}>
                 {filteredUserIds.length > 0 ? <IconFilterRed /> : <IconFilter />}
@@ -63,8 +64,8 @@ export const DashboardPage: React.FC = () => {
             <Tab title="Done" isActive={activeTab === 'done'} onClick={() => setActiveTab('done')} />
           </Tabs>
           {activeTabData.length > 0 ? (
-            <ScrollableBox mt="3rem" height="20rem">
-              {activeTabData?.map((task: Task) => <TaskBox key={task.id} task={task} />)}
+            <ScrollableBox mt="3rem" height="19rem" isGridView={isGridView}>
+              {activeTabData?.map((task: Task) => <TaskBox key={task.id} task={task} isGridView={isGridView} />)}
             </ScrollableBox>
           ) : (
             <Flex alignItems="center" mt="6rem" flexDirection="column" gap="1rem">

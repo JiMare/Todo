@@ -10,21 +10,27 @@ import { Avatar } from '@/components/ui/Avatar';
 
 type Props = {
   task: Task;
+  isGridView: boolean;
 };
 
-export const TaskBox: React.FC<Props> = ({ task }) => {
-   const user = task.user; 
+export const TaskBox: React.FC<Props> = ({ task, isGridView }) => {
+  const user = task.user;
   return (
-    <GreyBox>
+    <GreyBox isGridView={isGridView}>
       <Flex justifyContent="space-between">
-        <Flex gap="1rem">
-          <IconButton border>{task.status === 'done' ? <IconFileDone /> : <IconFile />}</IconButton>
+        <Flex gap="1rem" flexDirection={isGridView ? 'column' : 'row'}>
+          <Flex justifyContent="space-between" alignItems="center">
+            <IconButton border>{task.status === 'done' ? <IconFileDone /> : <IconFile />}</IconButton>
+            {isGridView && <Avatar initials={`${user.first_name.charAt(0)}${user.last_name.charAt(0)}`} />}
+          </Flex>
           <Flex flexDirection="column">
-            <Text bold maxWidth='10.75rem'>{task.name}</Text>
+            <Text bold maxWidth={isGridView ? '7.1875rem' : '10.75rem'}>
+              {task.name}
+            </Text>
             <Text secondary>{task.estimation}</Text>
           </Flex>
         </Flex>
-        <Avatar initials={`${user.first_name.charAt(0)}${user.last_name.charAt(0)}`} />
+        {!isGridView && <Avatar initials={`${user.first_name.charAt(0)}${user.last_name.charAt(0)}`} />}
       </Flex>
     </GreyBox>
   );

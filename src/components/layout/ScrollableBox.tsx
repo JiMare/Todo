@@ -3,6 +3,7 @@ import { flexbox, FlexboxProps, space, SpaceProps, layout, LayoutProps, grid, Gr
 
 type Props = {
   height: string;
+  isGridView?: boolean;
 } & FlexboxProps &
   SpaceProps &
   LayoutProps &
@@ -10,7 +11,8 @@ type Props = {
 
 export const ScrollableBox = styled.div<Props>`
   display: flex;
-  flex-direction: column;
+  flex-direction: ${({isGridView}) => isGridView ? 'row' : 'column'};
+  flex-wrap: wrap;
   gap: var(--spacing-md);
   max-height: height;
   overflow-y: auto;
