@@ -63,7 +63,7 @@ export const DashboardPage: React.FC = () => {
             <Tab title="Doing" isActive={activeTab === 'in_progress'} onClick={() => setActiveTab('in_progress')} />
             <Tab title="Done" isActive={activeTab === 'done'} onClick={() => setActiveTab('done')} />
           </Tabs>
-          {activeTabData.length > 0 ? (
+          {activeTabData && activeTabData.length > 0 ? (
             <ScrollableBox mt="3rem" height="19rem" isGridView={isGridView}>
               {activeTabData?.map((task: Task) => <TaskBox key={task.id} task={task} isGridView={isGridView} />)}
             </ScrollableBox>
