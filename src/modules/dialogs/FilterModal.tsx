@@ -9,15 +9,18 @@ import api from '../api/api';
 import { useQuery } from 'react-query';
 import { UserBox } from '../UserBox';
 import { UserType } from '../api/apiTypes';
+import { ScrollableBox } from '@/components/layout/ScrollableBox';
+import { Button } from '@/components/ui/Button';
 
 type Props = {
   onClose: () => void;
   filteredUserIds: UserType['id'][];
   onUpdate: (id: UserType['id']) => void;
   onReset: () => void;
+  filteredDataLength: number;
 };
 
-export const FilterModal: React.FC<Props> = ({ onClose, filteredUserIds, onUpdate, onReset }) => {
+export const FilterModal: React.FC<Props> = ({ onClose, filteredUserIds, onUpdate, onReset, filteredDataLength }) => {
   const { data } = useQuery(['users'], () => api.getUsers());
 
   return (
@@ -35,10 +38,18 @@ export const FilterModal: React.FC<Props> = ({ onClose, filteredUserIds, onUpdat
         <Title>Filters</Title>
         <Text secondary>Filter your tasks to maximize effectiveness.</Text>
       </Flex>
-      <Flex mt="3rem" flexDirection="column" gap="var(--spacing-md)">
+      <ScrollableBox mt="3rem" height="24rem">
         {data?.data?.map((user: UserType) => (
           <UserBox key={user.id} user={user} isActive={filteredUserIds.includes(user.id)} onUpdate={onUpdate} />
         ))}
+      </ScrollableBox>
+      <Flex justifyContent="space-between" gap="1rem" mt="2rem">
+        <Button full secondary onClick={onReset}>
+          Reset
+        </Button>
+        <Button full onClick={onClose}>
+          Show ({filteredDataLength})
+        </Button>
       </Flex>
     </Modal>
   );

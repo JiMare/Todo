@@ -71,6 +71,7 @@ export const DashboardPage: React.FC = () => {
           filteredUserIds={filteredUserIds}
           onReset={resetFilter}
           onUpdate={onUpdate}
+          filteredDataLength={filteredData.length}
         />
       )}
     </>
