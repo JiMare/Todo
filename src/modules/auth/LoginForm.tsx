@@ -27,7 +27,7 @@ export const LoginForm: React.FC = () => {
   const keepToken = useAuthStore((store) => store.keepToken);
   const { mutate, isLoading } = useMutation((params: LoginParams) => api.login(params), {
     onSuccess(data) {
-      keepToken(data.access_token);
+      keepToken(data.access_token, data.expires);
       navigate('/');
     },
   });

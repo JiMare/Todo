@@ -33,7 +33,7 @@ export const SignupForm: React.FC = () => {
   const keepToken = useAuthStore((store) => store.keepToken);
   const { mutate, isLoading } = useMutation((params: RegistrationParams) => api.registrate(params), {
     onSuccess(data) {
-      keepToken(data.access_token);
+      keepToken(data.access_token, data.expires);
       navigate('/');
     },
     onError(err) {

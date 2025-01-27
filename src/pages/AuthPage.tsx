@@ -3,10 +3,17 @@ import { Page } from '@/components/layout/Page';
 import { Tab, Tabs } from '@/components/ui/Tabs';
 import { LoginForm } from '@/modules/auth/LoginForm';
 import { SignupForm } from '@/modules/auth/SignupForm';
-import React, { useState } from 'react';
+import { useAuthStore } from '@/stores/authStore';
+import React, { useEffect, useState } from 'react';
 
 export const AuthPage: React.FC = () => {
+  const logOut = useAuthStore((store) => store.logOut);
   const [activeTab, setActiveTab] = useState(0);
+
+  useEffect(() => {
+    //to be sure no user is logged
+    logOut();
+  }, [logOut]);
 
   return (
     <Page center>

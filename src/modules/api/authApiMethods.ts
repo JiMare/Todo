@@ -10,6 +10,11 @@ const authApiMethods = {
     return handleResponse(response);
   },
 
+  logout: async () => {
+    const response = await axiosClient.post('/auth/logout');
+    return handleResponse(response);
+  },
+
   refresh: async () => {
     const response = await axiosClient.post('/auth/refresh');
     return handleResponse(response);

@@ -12,14 +12,6 @@ const axiosClient = axios.create({
   },
 });
 
-const axiosRefreshClient = axios.create({
-  baseURL: coreApi,
-  headers: {
-    'Content-type': 'application/json',
-    'X-AUTH-KEY': apiKey,
-  },
-});
-
 axiosClient.interceptors.request.use(
   (config) => {
     const token = useAuthStore.getState().token;
@@ -29,37 +21,6 @@ axiosClient.interceptors.request.use(
     return config;
   },
   (error) => {
-    return Promise.reject(error);
-  }
-);
-
-axiosClient.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    if (error.response.status === 401 && !originalRequest._retry) {
-      originalRequest._retry = true;
-      const logOut = useAuthStore.getState().logOut;
-      try {
-        const token = useAuthStore.getState().token;
-        if (!token) {
-          logOut();
-        }
-        axiosRefreshClient.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        const response = await axiosRefreshClient.post(`${coreApi}auth/refresh`);
-
-        const keepToken = useAuthStore.getState().keepToken;
-        keepToken(response.data.access_token);
-        axiosClient.defaults.headers.common['Authorization'] = `Bearer ${response.data.token}`;
-
-        return axiosClient(originalRequest);
-      } catch (refreshError) {
-        logOut();
-        return Promise.reject(refreshError);
-      }
-    }
-
     return Promise.reject(error);
   }
 );
