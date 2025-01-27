@@ -57,6 +57,22 @@ body {
   min-height: 100%;
 }
 
+.active button {
+  position: relative;
+}
+
+.active button::after {
+  content: '';
+  position: absolute;
+  bottom: -1.2rem; 
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 6px;
+  background-color: var(--color-white);
+  border-radius: 50%; 
+}
+
 @font-face {
     font-family: 'Objektiv';
     src: url(${ObjektivMk1TrialBlk}) format('truetype');

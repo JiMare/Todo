@@ -30,7 +30,7 @@ export const FilterModal: React.FC<Props> = ({ onClose, filteredUserIds, onUpdat
         <IconButton border>
           <IconFilter />
         </IconButton>
-        <SubTitle secondary onClick={onClose}>
+        <SubTitle secondary onClick={onClose} isAction>
           Close
         </SubTitle>
       </Flex>

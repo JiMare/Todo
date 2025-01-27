@@ -18,7 +18,6 @@ export const ScrollableBox = styled.div<Props>`
   overflow-y: auto;
   -ms-overflow-style: none;
   scrollbar-width: none;
-
   &::-webkit-scrollbar {
     display: none;
   }

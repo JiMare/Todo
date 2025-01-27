@@ -19,13 +19,12 @@ export const useAuthStore = create<State & Action, [['zustand/persist', State]]>
       token: '',
       tokenExpiry: null,
       keepToken: (token: string, expires: number) => {
-        const expiryTime = expires * 1000;
-        set(() => ({ token, tokenExpiry: expiryTime }));
-        const refreshTimeout = expiryTime - Date.now() - 60 * 1000;
-        if (refreshTimeout > 0) {
+        set(() => ({ token, tokenExpiry: expires }));
+        const refreshTime = expires * 1000 + 50 * 60 * 1000;
+        if (refreshTime - Date.now() > 0) {
           setTimeout(() => {
             get().refreshToken();
-          }, refreshTimeout);
+          }, refreshTime - Date.now());
         }
       },
       logOut: () => {
@@ -37,8 +36,10 @@ export const useAuthStore = create<State & Action, [['zustand/persist', State]]>
 
         try {
           const response = await api.refresh();
-          const { access_token, expires } = response.data;
-          keepToken(access_token, expires);
+          if (response && response.data) {
+            const { access_token, expires } = response.data;
+            keepToken(access_token, expires);
+          }
         } catch (error) {
           console.error('Token refresh failed', error);
           logOut();

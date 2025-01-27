@@ -25,4 +25,17 @@ axiosClient.interceptors.request.use(
   }
 );
 
+axiosClient.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    if (error.response.status === 401) {
+      const logOut = useAuthStore.getState().logOut;
+      console.error('Unauthorized request. Logging out user.');
+      logOut();
+    }
+
+    return Promise.reject(error);
+  }
+);
+
 export default axiosClient;

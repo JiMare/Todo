@@ -17,6 +17,7 @@ import { ReactComponent as IconVertical } from '@/components/assets/icons/distri
 import { ReactComponent as IconCheck } from '@/components/assets/icons/check.svg';
 import { FilterModal } from '@/modules/dialogs/FilterModal';
 import { ScrollableBox } from '@/components/layout/ScrollableBox';
+import { Menu } from '@/modules/Menu';
 
 export const DashboardPage: React.FC = () => {
   const [isGridView, setIsGridView] = useState(false);
@@ -46,10 +47,10 @@ export const DashboardPage: React.FC = () => {
               <IconGrid />
             </IconButton>
             <Flex gap="0.5rem">
-              <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsGridView(!isGridView)}>
+              <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsGridView(!isGridView)} isAction>
                 {isGridView ? <IconHorizontal /> : <IconVertical />}
               </IconButton>
-              <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsFilterModalOpen(true)}>
+              <IconButton bg="var(--color-secondary-bg)" onClick={() => setIsFilterModalOpen(true)} isAction>
                 {filteredUserIds.length > 0 ? <IconFilterRed /> : <IconFilter />}
               </IconButton>
             </Flex>
@@ -76,6 +77,7 @@ export const DashboardPage: React.FC = () => {
             </Flex>
           )}
         </Container>
+        <Menu />
       </Page>
       {isFilterModalOpen && (
         <FilterModal

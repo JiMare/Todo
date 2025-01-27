@@ -5,4 +5,5 @@ export const Page = styled.div<{ center?: boolean }>`
   justify-content: center;
   align-items: ${({ center }) => (center ? 'center' : 'flex-start')};
   min-height: 100dvh;
+  position: relative;
 `;

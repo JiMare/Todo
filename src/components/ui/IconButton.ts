@@ -3,6 +3,7 @@ import styled from 'styled-components';
 type Props = {
   border?: boolean;
   bg?: string;
+  isAction?: boolean;
 };
 
 export const IconButton = styled.button<Props>`
@@ -14,4 +15,5 @@ export const IconButton = styled.button<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: ${({ isAction }) => (isAction ? 'pointer' : 'arrow')};
 `;
