@@ -17,7 +17,7 @@ export const Input = styled.input<{ error?: boolean }>`
   &:-webkit-autofill:focus,
   &:-webkit-autofill:active {
     transition: background-color 99999s ease-out;
-    -webkit-text-fill-color: var(--color-white);
+    -webkit-text-fill-color: var(--color-primary-txt);
     background-color: inherit;
   }
 `;

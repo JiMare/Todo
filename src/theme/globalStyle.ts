@@ -82,7 +82,7 @@ body {
   transform: translateX(-50%);
   width: 6px;
   height: 6px;
-  background-color: var(--color-white);
+  background-color: var(--color-primary-txt);
   border-radius: 50%; 
 }
 
@@ -91,6 +91,7 @@ body {
     src: url(${ObjektivMk1TrialBlk}) format('truetype');
     font-weight: 800;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
@@ -98,6 +99,7 @@ body {
     src: url(${ObjektivMk1TrialBd}) format('truetype');
     font-weight: 700;
     font-style: normal;
+    font-display: swap;
 }
 
   @font-face {
@@ -105,6 +107,7 @@ body {
     src: url(${ObjektivMk1TrialRg}) format('truetype');
     font-weight: 500;
     font-style: normal;
+    font-display: swap;
 }
 
 /* Toastify */

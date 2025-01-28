@@ -21,7 +21,7 @@ type Props = {
 
 export const Button = styled.button<Props & SpaceProps & GridProps & FlexboxProps & LayoutProps & TypographyProps & ColorProps>`
   background-color: ${({ secondary }) => (secondary ? 'inherit' : 'var(--color-brand)')};
-  color: var(--color-primary-txt);
+  color: ${({ secondary }) => (secondary ? 'var(--color-primary-txt)' : 'var(--color-white)')};
   outline: none;
   border: 2px solid;
   border-color: ${({ secondary }) => (secondary ? 'var(--color-outline)' : 'var(--color-brand)')};
