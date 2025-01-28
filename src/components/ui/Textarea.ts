@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Input = styled.input<{ error?: boolean }>`
+export const Textarea = styled.textarea<{ error?: boolean }>`
   height: 3.125rem;
   border-radius: 0.75rem;
   background-color: inherit;
@@ -13,12 +13,7 @@ export const Input = styled.input<{ error?: boolean }>`
   font-weight: 500;
   line-height: 1.2594rem;
   width: 100%;
-  &:-webkit-autofill,
-  &:-webkit-autofill:hover,
-  &:-webkit-autofill:focus,
-  &:-webkit-autofill:active {
-    transition: background-color 99999s ease-out;
-    -webkit-text-fill-color: var(--color-primary-txt);
-    background-color: inherit;
-  }
+  padding-block: 0.8rem;
+  min-height: 9rem;
+  resize: vertical;
 `;

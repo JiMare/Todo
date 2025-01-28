@@ -16,7 +16,7 @@ export const ProfilePage: React.FC = () => {
   return (
     <Page>
       <Container>
-        <Flex justifyContent="flex-start" flexDirection="column" gap="0.8rem" mt="3rem">
+        <Flex justifyContent="flex-start" flexDirection="column" gap="0.8rem" mt="4rem">
           <Title>Profile</Title>
           <Text secondary>Manage your profile settings.</Text>
         </Flex>

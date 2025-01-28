@@ -10,6 +10,13 @@ export type RegistrationParams = LoginParams & {
 
 export type StatusType = 'backlog' | 'done' | 'in_progress';
 
+export type newTaskParams = {
+  name: string;
+  description: string;
+  estimation: string;
+  status: StatusType;
+};
+
 export type UserType = {
   id: number;
   email: string;
