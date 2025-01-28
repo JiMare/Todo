@@ -11,11 +11,11 @@ type Props = {
 
 export const ScrollableBox = styled.div<Props>`
   display: flex;
-  flex-direction: ${({isGridView}) => isGridView ? 'row' : 'column'};
-  flex-wrap: wrap;
+  flex-direction: ${({ isGridView }) => (isGridView ? 'row' : 'column')};
+  flex-wrap: ${({ isGridView }) => (isGridView ? 'wrap' : 'no-wrap')};
   gap: var(--spacing-md);
   max-height: height;
-  overflow-y: auto;
+  overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
   &::-webkit-scrollbar {
