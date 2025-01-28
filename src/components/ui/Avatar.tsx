@@ -13,6 +13,7 @@ export const Avatar: React.FC<Props> = ({ initials, large }) => {
 
 const Circle = styled.div<{ large?: boolean }>`
   background-color: var(--color-secondary-txt);
+  color: var(--color-white);
   height: ${({ large }) => (large ? '3.75rem' : '1.875rem')};
   width: ${({ large }) => (large ? '3.75rem' : '1.875rem')};
   border-radius: 50%;

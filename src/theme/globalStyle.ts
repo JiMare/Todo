@@ -29,6 +29,19 @@ export const GlobalStyles = createGlobalStyle`
     --transition: all 300ms ease;
 }
 
+.light {
+  --color-brand: #FF0022;
+  --color-white: #FFFFFF;
+  --color-primary-bg: #FFFFFF;
+  --color-secondary-bg: #F2F2F2;
+  --color-modal-bg: #DEDEDE;
+  --color-primary-txt: #121212;
+  --color-secondary-txt: #808080;
+  --color-system: #000000;
+  --color-outline: #DEDEDE;
+  --color-success: #46B278;
+}
+
 * {
   box-sizing: border-box;
   font-family: 'Objektiv', sans-serif;
