@@ -1,50 +1,31 @@
-# React + TypeScript + Vite
+# Task Manager App – Edgy Digital (React + TypeScript + Vite)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+## What was done
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ### Feature 1: Login and Authorized State
+      - login
+      - sign up
+      - refresh
 
-## Expanding the ESLint configuration
+- ### Feature 2: Task List
+      - dashboard page
+      - filter tasks by author    
+      - toggle view mode
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- ### Feature 3: Task Creation
+      - task creation modal       
 
-- Configure the top-level `parserOptions` property like this:
+- ### Feature 4: Profile
+      - profile page
+      - logout
+      - toggle light/dark mode
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## What to do next
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
-
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- implement the task detail screen as a modal according to the design
+- use the PATCH endpoint to change the status of the task 
+- implement the "Edit Task" page and use the PUT endpoint for updates 
+- collaborate with the backend team - I couldn't find the account creation date and task priority in the 
+provided data
