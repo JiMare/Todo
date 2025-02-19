@@ -1,0 +1,14 @@
+zerops:
+  setup: nginx0
+  
+  build:
+    base: nodejs@20
+    buildCommands:
+      - npm i
+      - npm run build
+    deployFiles:
+      - ./build/~
+  
+  run:
+    base: nginx@1.22
+    siteConfigPath: site.conf
