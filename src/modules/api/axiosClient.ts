@@ -4,6 +4,8 @@ import axios from 'axios';
 const coreApi = import.meta.env.VITE_APP_CORE_API;
 const apiKey = import.meta.env.VITE_APP_API_KEY;
 
+console.log(coreApi, apiKey)
+
 const axiosClient = axios.create({
   baseURL: coreApi,
   headers: {
