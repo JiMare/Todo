@@ -37,5 +37,4 @@ zerops:
 
       # point to file that will contain
       # your custom nginx site config
-      siteConfigPath: site.conf
 
