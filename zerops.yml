@@ -1,19 +1,41 @@
 zerops:
-  setup: nginx0
+  - setup: nginx0
+    # ==== how to build your application ====
+    build:
+      # what technologies should the build
+      # container be based on (can be an array)
+      base: nodejs@20
 
-  build:
-    base: nodejs@20
-    buildCommands:
-      - npm i
-      - npm run build
-    deployFiles:
-      - ./dist/~
+      # what commands to use to build your app
+      buildCommands:
+        - npm i
+        - npm run build
 
-  cache:
-    - node_modules
-    - package-lock.json
+      # select which files / folders to deploy
+      # after the build successfully finished
+      # `~` can be used to mark starting point
+      # of deploy path, this example would deploy
+      # files in folder dist without the folder
+      # itself, either way make sure your nginx
+      # config points to the correct folder
+      deployFiles:
+        - dist/~
 
-  run:
-    base: nginx@1.22
-    siteConfigPath: site.conf
+      # *optional*: which files / folders
+      # to cache for the next use
+      cache:
+        - node_modules
+        - package-lock.json
+
+    # ==== how to run your application ====
+    run:
+      # what technology should the runtime
+      # container be based on, can be extended
+      # in `run.prepareCommands` using
+      # `zsc install nodejs@20`
+      base: nginx@1.22
+
+      # point to file that will contain
+      # your custom nginx site config
+      siteConfigPath: site.conf
 
