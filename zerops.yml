@@ -5,6 +5,8 @@ zerops:
       # what technologies should the build
       # container be based on (can be an array)
       base: nodejs@20
+      envVariables:
+        VITE_APP_API_KEY: ${RUNTIME_VITE_APP_API_KEY}
 
       # what commands to use to build your app
       buildCommands:
