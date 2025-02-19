@@ -10,7 +10,6 @@ zerops:
       buildCommands:
         - npm i
         - npm run build
-        - cp site.conf /var/www/site.conf
 
       # select which files / folders to deploy
       # after the build successfully finished
@@ -38,5 +37,5 @@ zerops:
 
       # point to file that will contain
       # your custom nginx site config
-      siteConfigPath: /var/www/site.conf
+      siteConfigPath: site.conf
 
