@@ -11,9 +11,6 @@ zerops:
         - npm i
         - npm run build
 
-      envVariables:
-        VITE_APP_API_KEY: ${secret:VITE_APP_API_KEY}  
-
       # select which files / folders to deploy
       # after the build successfully finished
       # `~` can be used to mark starting point
