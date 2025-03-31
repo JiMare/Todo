@@ -38,8 +38,7 @@ export const ModalBody = styled.div`
   top: 50%;
   left: 50%;
   overflow: auto;
-  width: 24.375rem;
-  max-width: 100%;
+  width: 100%;
   min-height: 80%;
   padding: 2rem;
   background: var(--color-primary-bg);
@@ -50,5 +49,8 @@ export const ModalBody = styled.div`
   scrollbar-width: none;
   &::-webkit-scrollbar {
     display: none;
+  }
+  @media (min-width: 24.375rem) {
+    width: 24.375rem;
   }
 `;

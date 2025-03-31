@@ -86,7 +86,7 @@ export const AddTaskModal: React.FC<Props> = ({ onClose }) => {
               error={Boolean(errors.estimation)}
             />
           </Flex>
-          <Flex justifyContent="space-between" gap="1rem" mt="10rem">
+          <Flex justifyContent="space-between" flexDirection={['column', 'row']} gap="1rem" mt="10rem">
             <Button full secondary onClick={onClose} type="button">
               Cancel
             </Button>

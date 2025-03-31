@@ -20,4 +20,7 @@ const Circle = styled.div<{ large?: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
+  @media (max-width: 380px) {
+    display: none;
+  }
 `;

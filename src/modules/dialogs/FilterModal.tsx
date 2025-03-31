@@ -43,7 +43,7 @@ export const FilterModal: React.FC<Props> = ({ onClose, filteredUserIds, onUpdat
           <UserBox key={user.id} user={user} isActive={filteredUserIds.includes(user.id)} onUpdate={onUpdate} />
         ))}
       </ScrollableBox>
-      <Flex justifyContent="space-between" gap="1rem" mt="2rem">
+      <Flex justifyContent="space-between" flexDirection={['column', 'row']} gap="1rem" mt="2rem">
         <Button full secondary onClick={onReset}>
           Reset
         </Button>

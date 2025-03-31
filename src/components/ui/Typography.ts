@@ -18,6 +18,9 @@ export const Text = styled.span<{ bold?: boolean; secondary?: boolean; maxWidth?
     overflow: hidden;
     text-overflow: ellipsis;
     width: ${maxWidth};
+    @media (max-width: 25rem) {
+        width: 5rem;
+      }
   `}
 `;
 

@@ -1,8 +1,11 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 24.375rem;
   padding: var(--spacing-lg);
+  width: 100%;
+  @media (min-width: 24.375rem) {
+    width: 24.375rem;
+  }
 `;
 
 export const Box = styled(Container)`
